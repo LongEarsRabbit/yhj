@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        addOne = (Button) findViewById(R.id.add_one);
-        selectAll = (Button) findViewById(R.id.select_all);
-        change = (Button) findViewById(R.id.change);
-        delete = (Button) findViewById(R.id.delete);
-        selectMo = (Button) findViewById(R.id.select_mo);
+        addOne = findViewById(R.id.add_one);
+        selectAll = findViewById(R.id.select_all);
+        change = findViewById(R.id.change);
+        delete = findViewById(R.id.delete);
+        selectMo = findViewById(R.id.select_mo);
 
         addOne.setOnClickListener(this::onClick);
         selectAll.setOnClickListener(this::onClick);
