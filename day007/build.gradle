@@ -14,6 +14,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -30,6 +36,7 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -78,4 +85,8 @@ dependencies {
     implementation 'io.github.h07000223:flycoTabLayout:3.0.0'
     //轮播图
     implementation 'com.youth.banner:banner:1.4.10'
+    def room_version = "2.4.2"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }

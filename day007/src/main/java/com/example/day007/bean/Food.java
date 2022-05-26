@@ -1,12 +1,22 @@
 package com.example.day007.bean;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * @Date 2022/5/25
  */
+
+@Entity
 public class Food {
+    @PrimaryKey
     private Integer id;
+    @ColumnInfo(name = "categoryName")
     private String categoryName;
+    @ColumnInfo(name = "categoryIcon")
     private String categoryIcon;
+    @ColumnInfo(name = "parentId")
     private Integer parentId;
 
     public Integer getId() {
