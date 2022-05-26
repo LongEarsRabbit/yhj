@@ -1,4 +1,4 @@
-package com.example.day007;
+package com.example.day007.main;
 
 import androidx.lifecycle.LiveData;
 

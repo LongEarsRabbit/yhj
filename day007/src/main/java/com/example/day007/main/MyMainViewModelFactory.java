@@ -1,4 +1,4 @@
-package com.example.day007;
+package com.example.day007.main;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

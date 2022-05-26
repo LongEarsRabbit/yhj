@@ -1,10 +1,11 @@
-package com.example.day007;
+package com.example.day007.main;
 
 import android.util.Log;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.day007.R;
 import com.example.day007.bean.Food;
 import com.example.day007.core.BaseActivity;
 import com.example.day007.databinding.ActivityMainBinding;
