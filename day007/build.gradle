@@ -89,4 +89,7 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    //上拉下拉
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.3'
 }

@@ -17,24 +17,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            Class<?> aClass  = Class.forName("com.example.day008.User");
-            User user = (User) aClass.newInstance();
-            //获取所有公开方法
-//            Method[] methods = aClass.getMethods();
-//            for (Method method : methods) {
-//                Log.i(TAG, "onCreate: "+method.getName());
-//            }
-            //获取所有方法
-            Method[] declaredMethods = aClass.getDeclaredMethods();
-            for (Method declaredMethod : declaredMethods) {
-                Log.i(TAG, "onCreate: "+declaredMethod.getName());
-            }
 
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
     private void fieldTest(){
@@ -73,5 +56,29 @@ public class MainActivity extends AppCompatActivity{
         }
 
 
+    }
+    private void methodTest(){
+        try {
+            Class<?> aClass  = Class.forName("com.example.day008.User");
+            User user = (User) aClass.newInstance();
+            //获取所有公开方法
+//            Method[] methods = aClass.getMethods();
+//            for (Method method : methods) {
+//                Log.i(TAG, "onCreate: "+method.getName());
+//            }
+            //获取所有方法
+//            Method[] declaredMethods = aClass.getDeclaredMethods();
+//            for (Method declaredMethod : declaredMethods) {
+//                Log.i(TAG, "onCreate: "+declaredMethod.getName());
+//            }
+            Method setName = aClass.getDeclaredMethod("setName", String.class);
+            setName.setAccessible(true);
+            setName.invoke(user,"字节码方法设置值");
+            Log.i(TAG, "onCreate: "+user.name);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
