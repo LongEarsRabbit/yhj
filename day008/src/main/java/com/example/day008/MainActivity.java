@@ -7,13 +7,37 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity{
+    String TAG = "TAG--";
+
     @RequiresApi(api = 31)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        try {
+            Class<?> aClass  = Class.forName("com.example.day008.User");
+            User user = (User) aClass.newInstance();
+            //获取所有公开方法
+//            Method[] methods = aClass.getMethods();
+//            for (Method method : methods) {
+//                Log.i(TAG, "onCreate: "+method.getName());
+//            }
+            //获取所有方法
+            Method[] declaredMethods = aClass.getDeclaredMethods();
+            for (Method declaredMethod : declaredMethods) {
+                Log.i(TAG, "onCreate: "+declaredMethod.getName());
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    private void fieldTest(){
 
 //        Class clazz = User.class;
 //        String packageName = clazz.getSimpleName();
@@ -36,11 +60,11 @@ public class MainActivity extends AppCompatActivity{
             //根据指定的名称获取指定的字段
             Field nameField = aClass.getField("name");
             nameField.set(user,"张三");
-            Log.i("TAG--", user.name);
+            Log.i(TAG, user.name);
             Field address = aClass.getDeclaredField("address");
             address.setAccessible(true);
             address.set(user,"哇哈哈工厂");
-            Log.i("TAG--", user.getAddress());
+            Log.i(TAG, user.getAddress());
 
 
 

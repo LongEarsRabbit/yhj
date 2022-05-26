@@ -19,4 +19,5 @@ public class MainViewModel extends BaseViewModel<MainRepository> {
     public LiveData<ApiResponse<List<Food>>> getFood(){
         return repository.getFood();
     }
+
 }
