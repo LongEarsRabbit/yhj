@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 //                        .build();
         //3调度 WorkManager
         WorkManager.getInstance(this).enqueue(build);
-        //4约束
 
 
 
