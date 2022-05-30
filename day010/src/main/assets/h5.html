@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            function callJs(){
+                alert("被Android调用了");
+                return "刘继权";
+            }
+            function callJs1(s){
+                alert(s);
+            }
+        </script>
+        <h1>
+            你说他是张三他就是张三
+        </h1>
+        <button type="button" onclick="window.home.show('张三')">调用Android</button>
+        <button type="button" onclick="window.home.showNull()">调用Android</button>
+    </body>
+</html>
