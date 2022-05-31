@@ -1,5 +1,7 @@
 package com.example.day012;
 
+import javax.inject.Inject;
+
 /**
  * @Date 2022/5/31
  */
@@ -9,7 +11,7 @@ public class User {
 
     public User() {
     }
-
+    @Inject
     public User(String name) {
         this.name = name;
     }
