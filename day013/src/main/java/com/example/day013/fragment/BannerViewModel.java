@@ -26,5 +26,14 @@ public class BannerViewModel extends ViewModel {
         return repository.getBanner();
     }
 
+    //  本地  插入
+    public void insertBanner(Banner... banners){
+        repository.insertBanner(banners);
+    }
+
+    //  本地  查询
+    public List<Banner> getBanners(){
+        return repository.getBanners();
+    }
 
 }

@@ -16,6 +16,9 @@ import javax.inject.Inject;
  * 简述: 选择网络获取 或者 本地获取
  */
 public class BannerRepository {
+
+    private static final String TAG = "yang";
+
     private BannerLocalDataSource localDataSource;
     private BannerRemoteDataSource remoteDataSource;
 
@@ -30,5 +33,16 @@ public class BannerRepository {
     }
 
 
-    //本地
+
+
+    //  本地  插入
+    public void insertBanner(Banner... banners){
+        localDataSource.insertBanner(banners);
+    }
+
+    //  本地  查询
+    public List<Banner> getBanners(){
+        return localDataSource.getBanners();
+
+    }
 }

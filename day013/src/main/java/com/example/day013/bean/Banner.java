@@ -9,6 +9,8 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "banner")
 public class Banner {
 
+
+
     @PrimaryKey(autoGenerate = true)
     private int autoId;
 
@@ -18,6 +20,14 @@ public class Banner {
     private String title;
     private String url;
     private Integer type;
+
+    public int getAutoId() {
+        return autoId;
+    }
+
+    public void setAutoId(int autoId) {
+        this.autoId = autoId;
+    }
 
     public Integer getId() {
         return id;

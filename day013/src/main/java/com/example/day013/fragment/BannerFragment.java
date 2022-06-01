@@ -1,6 +1,7 @@
 package com.example.day013.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class BannerFragment extends Fragment {
-
+    private static final String TAG = "yang";
     private BannerViewModel mViewModel;
     private BannerFragmentBinding binding;
 
@@ -51,7 +52,20 @@ public class BannerFragment extends Fragment {
                  bannerList.addAll(listApiResponse.data);
                  bannerAdapter.notifyDataSetChanged();
 
-                 //存入数据库
+
+                //查询
+                List<Banner> banners1 = mViewModel.getBanners();
+                for (Banner banner : banners1) {
+                    Log.i(TAG, "onChanged: "+banner.getTitle());
+                }
+                if(banners1.size() == 0){
+                    //存入数据库
+                    List<Banner> data = listApiResponse.getData();
+                    Banner[] banners = data.toArray(new Banner[data.size()]);
+                    mViewModel.insertBanner(banners);
+                }
+
+
 
 
             }
