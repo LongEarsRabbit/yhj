@@ -1,6 +1,8 @@
 package com.example.day015;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -18,6 +20,13 @@ public class MyTextView extends View {
     int defSizeW = 0;
     int defSizeH = 0;
 
+    float textSize = 0;
+    String name = "";
+
+
+    Paint paint;
+
+
     public MyTextView(Context context) {
         super(context);
         init(context, null);
@@ -28,17 +37,27 @@ public class MyTextView extends View {
         init(context, attrs);
     }
 
-    private void init(Context context,@Nullable AttributeSet attrs) {
-        Paint paint = new Paint();
+    @SuppressLint("Recycle")
+    private void init(Context context, @Nullable AttributeSet attrs) {
+
+        paint = new Paint();
+
+        if(attrs != null){
+            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyTextView);
+            textSize = typedArray.getDimension(R.styleable.MyTextView_myTextSize, 10f);
+            name = typedArray.getString(R.styleable.MyTextView_myText);
+            typedArray.recycle();
+        }
 
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        canvas.drawColor(Color.BLACK);
-
+//        canvas.drawColor(Color.BLACK);
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(textSize);
+        canvas.drawText(name,200,200,paint);
     }
     //必须要重写 计算自己包裹内容的大小
     //源码里的warp和match是一个逻辑
@@ -53,7 +72,7 @@ public class MyTextView extends View {
                 defSizeW = size;
                 break;
             case MeasureSpec.AT_MOST:
-                defSizeW = 500;  //根据内容大小
+                defSizeW = 1000;  //根据内容大小
                 break;
             case MeasureSpec.EXACTLY:
                 defSizeW = size;
@@ -67,7 +86,7 @@ public class MyTextView extends View {
                 defSizeH = size1;
                 break;
             case MeasureSpec.AT_MOST: //不指定测量模式
-                defSizeH = 500;
+                defSizeH = 1000;
                 break;
             case MeasureSpec.EXACTLY: //精准固定值固定值
                 defSizeH = size1;
